@@ -2,11 +2,7 @@ package com.okan.petclinic.model;
 
 import java.time.LocalDate;
 
-/**
- * @Author: Okan Hollander
- * @Date: 28/12/2019
- * @Time: 20:09
- */
+
 public class Pet {
 
     private PetType petType;

@@ -1,10 +1,5 @@
 package com.okan.petclinic.model;
 
-/**
- * @Author: Okan Hollander
- * @Date: 28/12/2019
- * @Time: 20:08
- */
 public class Person {
 
     private String firstName;

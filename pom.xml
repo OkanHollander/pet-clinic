@@ -40,7 +40,9 @@
     </build>
 
     <scm>
+        <connection>scm:git:https://github.com/OkanHollander/pet-clinic.git</connection>
         <developerConnection>scm:git:git@github.com:OkanHollander/pet-clinic.git</developerConnection>
+        <url>https://github.com/user/project/${project.scm.tag}</url>
         <tag>HEAD</tag>
     </scm>
 

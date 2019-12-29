@@ -1,6 +1,7 @@
 package com.okan.petclinic.bootstrap;
 
 import com.okan.petclinic.model.Owner;
+import com.okan.petclinic.model.Pet;
 import com.okan.petclinic.model.PetType;
 import com.okan.petclinic.model.Vet;
 import com.okan.petclinic.services.OwnerService;
@@ -9,6 +10,8 @@ import com.okan.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 /**
  * Author:   Okan Hollander
@@ -54,14 +57,35 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Okan");
         owner1.setLastName("Hollander");
+        owner1.setAddress("123 Street");
+        owner1.setCity("Rotterdam");
+        owner1.setTelephone("123456789");
+        // Create Pet for owner 1
+        Pet owner1Pet = new Pet();
+        owner1Pet.setName("Doggy");
+        owner1Pet.setPetType(dog);
+        owner1Pet.setBirthDate(LocalDate.of(2015, 5, 14));
+        owner1Pet.setOwner(owner1);
 
+        owner1.getPets().add(owner1Pet);
         ownerService.save(owner1);
+
 
         // Create owner 2
         Owner owner2 = new Owner();
         owner2.setFirstName("Lavinia");
         owner2.setLastName("Petcu");
+        owner2.setAddress("456 Street");
+        owner2.setCity("Rotterdam");
+        owner2.setTelephone("987654321");
+        // Create Pet for owner 2
+        Pet owner2Pet = new Pet();
+        owner2Pet.setName("Kitty");
+        owner2Pet.setPetType(cat);
+        owner2Pet.setBirthDate(LocalDate.of(2012, 10, 11));
+        owner2Pet.setOwner(owner2);
 
+        owner2.getPets().add(owner2Pet);
         ownerService.save(owner2);
 
         // print message

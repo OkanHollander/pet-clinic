@@ -60,8 +60,8 @@ public class DataLoader implements CommandLineRunner {
         //Create vet 2
         Vet vet2 = new Vet();
         vet2.setId(2L);
-        vet2.setFirstName("Geert");
-        vet2.setLastName("Timmer");
+        vet2.setFirstName("Frank");
+        vet2.setLastName("Vogler");
 
         vetService.save(vet2);
 

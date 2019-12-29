@@ -1,8 +1,10 @@
 package com.okan.petclinic.bootstrap;
 
 import com.okan.petclinic.model.Owner;
+import com.okan.petclinic.model.PetType;
 import com.okan.petclinic.model.Vet;
 import com.okan.petclinic.services.OwnerService;
+import com.okan.petclinic.services.PetTypeService;
 import com.okan.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,15 +20,35 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        // Create PetType 1
+        PetType dog = new PetType();
+        dog.setName("Dog");
+
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        // Create PetType 2
+        PetType cat = new PetType();
+        cat.setName("Cat");
+
+        PetType savedCatPetType = petTypeService.save(cat);
+
+        // print message
+        System.out.println("****** Loading Pet Types... ******");
+        System.out.println(dog.getName() + " successfully loaded!");
+        System.out.println(cat.getName() + " successfully loaded!");
+
 
         // Create owner 1
         Owner owner1 = new Owner();
@@ -43,7 +65,7 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         // print message
-        System.out.println("Loading Owners...");
+        System.out.println("****** Loading Owners... ******");
         System.out.println(owner1.getFirstName() + " " + owner1.getLastName() + " successfully loaded!");
         System.out.println(owner2.getFirstName() + " " + owner2.getLastName() + " successfully loaded!");
 
@@ -63,7 +85,7 @@ public class DataLoader implements CommandLineRunner {
 
 
         // print message
-        System.out.println("Loading vets...");
+        System.out.println("****** Loading vets... ******");
         System.out.println(vet1.getFirstName() + " " + vet1.getLastName() + " successfully loaded!");
         System.out.println(vet2.getFirstName() + " " + vet2.getLastName() + " successfully loaded!");
 

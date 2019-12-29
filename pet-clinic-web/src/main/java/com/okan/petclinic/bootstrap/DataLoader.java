@@ -30,7 +30,6 @@ public class DataLoader implements CommandLineRunner {
 
         // Create owner 1
         Owner owner1 = new Owner();
-        owner1.setId(1L);
         owner1.setFirstName("Okan");
         owner1.setLastName("Hollander");
 
@@ -38,7 +37,6 @@ public class DataLoader implements CommandLineRunner {
 
         // Create owner 2
         Owner owner2 = new Owner();
-        owner2.setId(2L);
         owner2.setFirstName("Lavinia");
         owner2.setLastName("Petcu");
 
@@ -51,7 +49,6 @@ public class DataLoader implements CommandLineRunner {
 
         // Create Vet 1
         Vet vet1 = new Vet();
-        vet1.setId(1L);
         vet1.setFirstName("Geert");
         vet1.setLastName("Timmer");
 
@@ -59,7 +56,6 @@ public class DataLoader implements CommandLineRunner {
 
         //Create vet 2
         Vet vet2 = new Vet();
-        vet2.setId(2L);
         vet2.setFirstName("Frank");
         vet2.setLastName("Vogler");
 

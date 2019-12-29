@@ -2,6 +2,7 @@ package com.okan.petclinic.services.map;
 
 import com.okan.petclinic.model.Pet;
 import com.okan.petclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import java.util.Set;
  * Date:     29/12/2019
  * Time:     11:41
  */
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override

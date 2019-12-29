@@ -2,6 +2,7 @@ package com.okan.petclinic.services.map;
 
 import com.okan.petclinic.model.Owner;
 import com.okan.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -10,6 +11,7 @@ import java.util.Set;
  * Date:     29/12/2019
  * Time:     11:32
  */
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 

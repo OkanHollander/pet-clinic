@@ -1,7 +1,7 @@
 package com.okan.petclinic.services.map;
 
 import com.okan.petclinic.model.Pet;
-import com.okan.petclinic.services.CrudService;
+import com.okan.petclinic.services.PetService;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import java.util.Set;
  * Date:     29/12/2019
  * Time:     11:41
  */
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {

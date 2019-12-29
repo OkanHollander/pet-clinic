@@ -1,0 +1,76 @@
+package com.okan.petclinic.bootstrap;
+
+import com.okan.petclinic.model.Owner;
+import com.okan.petclinic.model.Vet;
+import com.okan.petclinic.services.OwnerService;
+import com.okan.petclinic.services.VetService;
+import com.okan.petclinic.services.map.OwnerServiceMap;
+import com.okan.petclinic.services.map.VetServiceMap;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+/**
+ * Author:   Okan Hollander
+ * Date:     29/12/2019
+ * Time:     12:34
+ */
+@Component
+public class DataLoader implements CommandLineRunner {
+
+    private final OwnerService ownerService;
+    private final VetService vetService;
+
+    public DataLoader() {
+        ownerService = new OwnerServiceMap();
+        vetService = new VetServiceMap();
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        // Create owner 1
+        Owner owner1 = new Owner();
+        owner1.setId(1L);
+        owner1.setFirstName("Okan");
+        owner1.setLastName("Hollander");
+
+        ownerService.save(owner1);
+
+        // Create owner 2
+        Owner owner2 = new Owner();
+        owner2.setId(2L);
+        owner2.setFirstName("Lavinia");
+        owner2.setLastName("Petcu");
+
+        ownerService.save(owner2);
+
+        // print message
+        System.out.println("Loading Owners...");
+        System.out.println(owner1.getFirstName() + " " + owner1.getLastName() + " successfully loaded!");
+        System.out.println(owner2.getFirstName() + " " + owner2.getLastName() + " successfully loaded!");
+
+        // Create Vet 1
+        Vet vet1 = new Vet();
+        vet1.setId(1L);
+        vet1.setFirstName("Geert");
+        vet1.setLastName("Timmer");
+
+        vetService.save(vet1);
+
+        //Create vet 2
+        Vet vet2 = new Vet();
+        vet2.setId(2L);
+        vet2.setFirstName("Geert");
+        vet2.setLastName("Timmer");
+
+        vetService.save(vet2);
+
+
+        // print message
+        System.out.println("Loading vets...");
+        System.out.println(vet1.getFirstName() + " " + vet1.getLastName() + " successfully loaded!");
+        System.out.println(vet2.getFirstName() + " " + vet2.getLastName() + " successfully loaded!");
+
+
+    }
+}

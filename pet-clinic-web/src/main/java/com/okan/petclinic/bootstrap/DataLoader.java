@@ -1,11 +1,9 @@
 package com.okan.petclinic.bootstrap;
 
-import com.okan.petclinic.model.Owner;
-import com.okan.petclinic.model.Pet;
-import com.okan.petclinic.model.PetType;
-import com.okan.petclinic.model.Vet;
+import com.okan.petclinic.model.*;
 import com.okan.petclinic.services.OwnerService;
 import com.okan.petclinic.services.PetTypeService;
+import com.okan.petclinic.services.SpecialityService;
 import com.okan.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,27 +22,40 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService,
+                      VetService vetService,
+                      PetTypeService petTypeService,
+                      SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        int count = petTypeService.findAll().size();
+
+
+        if (count == 0) {
+            loadData();
+        }
+
+    }
+
+    private void loadData() {
         // Create PetType 1
         PetType dog = new PetType();
         dog.setName("Dog");
-
         PetType savedDogPetType = petTypeService.save(dog);
 
         // Create PetType 2
         PetType cat = new PetType();
         cat.setName("Cat");
-
         PetType savedCatPetType = petTypeService.save(cat);
 
         // print message
@@ -52,6 +63,25 @@ public class DataLoader implements CommandLineRunner {
         System.out.println(dog.getName() + " successfully loaded!");
         System.out.println(cat.getName() + " successfully loaded!");
 
+        // Create Speciality 1
+        Speciality radiology = new Speciality();
+        radiology.setDescription("Radiology");
+        Speciality savedRadiology = specialityService.save(radiology);
+
+        // Create Speciality 2
+        Speciality surgery = new Speciality();
+        surgery.setDescription("Surgery");
+        Speciality savedSurgery = specialityService.save(surgery);
+
+        //Create Speciality 3
+        Speciality dentistry = new Speciality();
+        dentistry.setDescription("Dentistry");
+        Speciality savedDentistry = specialityService.save(dentistry);
+
+        System.out.println("****** Loading Specialities ******");
+        System.out.println(radiology.getDescription() + " successfully loaded!");
+        System.out.println(surgery.getDescription() + " successfully loaded!");
+        System.out.println(dentistry.getDescription() + " successfully loaded!");
 
         // Create owner 1
         Owner owner1 = new Owner();
@@ -97,6 +127,7 @@ public class DataLoader implements CommandLineRunner {
         Vet vet1 = new Vet();
         vet1.setFirstName("Geert");
         vet1.setLastName("Timmer");
+        vet1.getSpecialities().add(savedDentistry);
 
         vetService.save(vet1);
 
@@ -104,6 +135,7 @@ public class DataLoader implements CommandLineRunner {
         Vet vet2 = new Vet();
         vet2.setFirstName("Frank");
         vet2.setLastName("Vogler");
+        vet2.getSpecialities().add(savedSurgery);
 
         vetService.save(vet2);
 
@@ -112,7 +144,5 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("****** Loading vets... ******");
         System.out.println(vet1.getFirstName() + " " + vet1.getLastName() + " successfully loaded!");
         System.out.println(vet2.getFirstName() + " " + vet2.getLastName() + " successfully loaded!");
-
-
     }
 }

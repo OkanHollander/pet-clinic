@@ -36,4 +36,11 @@ public class OwnerController {
 
         return "owners/index";
     }
+
+
+    //TODO NOT IMPLEMENTED YET
+    @GetMapping("/find")
+    public String findOwners() {
+        return "notimplemented";
+    }
 }

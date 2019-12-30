@@ -16,4 +16,10 @@ public class IndexController {
 
         return "index";
     }
+
+    //TODO NOT IMPLEMENTED YET
+    @GetMapping("/oups")
+    public String errorPage() {
+        return "notimplemented";
+    }
 }

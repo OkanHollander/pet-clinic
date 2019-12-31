@@ -1,22 +1,21 @@
 package com.okan.petclinic.services.map;
 
-import com.okan.petclinic.model.Speciality;
-import com.okan.petclinic.services.SpecialityService;
+import com.okan.petclinic.model.Pet;
+import com.okan.petclinic.services.PetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * Author:   Okan Hollander
- * Date:     30/12/2019
- * Time:     09:33
+ * Date:     29/12/2019
+ * Time:     11:41
  */
 @Service
-public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialityService {
-
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
-    public Set<Speciality> findAll() {
+    public Set<Pet> findAll() {
         return super.findAll();
     }
 
@@ -26,17 +25,17 @@ public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> i
     }
 
     @Override
-    public void delete(Speciality object) {
+    public void delete(Pet object) {
         super.delete(object);
     }
 
     @Override
-    public Speciality save(Speciality object) {
+    public Pet save(Pet object) {
         return super.save(object);
     }
 
     @Override
-    public Speciality findById(Long id) {
+    public Pet findById(Long id) {
         return super.findById(id);
     }
 }

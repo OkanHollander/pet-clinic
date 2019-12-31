@@ -1,9 +1,6 @@
 package com.okan.petclinic.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
@@ -23,7 +20,7 @@ public class Visit extends BaseEntity {
     private String description;
 
     @ManyToOne
-    @Column(name = "pet")
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
 

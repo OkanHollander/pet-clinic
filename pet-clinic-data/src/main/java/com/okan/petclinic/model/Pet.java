@@ -15,12 +15,10 @@ public class Pet extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "type_id")
-    @Column(name = "pet_type")
     private PetType petType;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    @Column(name = "owner")
     private Owner owner;
 
     @Column(name = "birth_date")

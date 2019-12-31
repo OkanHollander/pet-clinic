@@ -5,6 +5,7 @@ import com.okan.petclinic.model.Vet;
 import com.okan.petclinic.services.SpecialityService;
 import com.okan.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.Set;
  * Time:     11:44
  */
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialityService specialityService;

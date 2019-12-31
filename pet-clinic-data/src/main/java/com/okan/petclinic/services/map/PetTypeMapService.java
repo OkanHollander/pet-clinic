@@ -2,6 +2,7 @@ package com.okan.petclinic.services.map;
 
 import com.okan.petclinic.model.PetType;
 import com.okan.petclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
  * Time:     21:12
  */
 @Service
+@Profile({"default", "map"})
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
 
 

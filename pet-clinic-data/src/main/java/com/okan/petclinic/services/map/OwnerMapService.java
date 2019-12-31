@@ -6,6 +6,7 @@ import com.okan.petclinic.services.OwnerService;
 import com.okan.petclinic.services.PetService;
 import com.okan.petclinic.services.PetTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -16,6 +17,7 @@ import java.util.Set;
  * Time:     11:32
  */
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;

@@ -1,10 +1,7 @@
 package com.okan.petclinic.bootstrap;
 
 import com.okan.petclinic.model.*;
-import com.okan.petclinic.services.OwnerService;
-import com.okan.petclinic.services.PetTypeService;
-import com.okan.petclinic.services.SpecialityService;
-import com.okan.petclinic.services.VetService;
+import com.okan.petclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -23,23 +20,25 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired
     public DataLoader(OwnerService ownerService,
                       VetService vetService,
                       PetTypeService petTypeService,
-                      SpecialityService specialityService) {
+                      SpecialityService specialityService,
+                      VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
         int count = petTypeService.findAll().size();
-
 
         if (count == 0) {
             loadData();
@@ -118,10 +117,20 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(owner2Pet);
         ownerService.save(owner2);
 
+        // Create Visit for owner 2
+        Visit catVisit = new Visit();
+        catVisit.setPet(owner2Pet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Kitty almost dead");
+
+        visitService.save(catVisit);
+
         // print message
         System.out.println("****** Loading Owners... ******");
         System.out.println(owner1.getFirstName() + " " + owner1.getLastName() + " successfully loaded!");
         System.out.println(owner2.getFirstName() + " " + owner2.getLastName() + " successfully loaded!");
+        System.out.println("****** Loading Visits ******");
+        System.out.println(catVisit.getPet().getName() + " successfully loaded!");
 
         // Create Vet 1
         Vet vet1 = new Vet();

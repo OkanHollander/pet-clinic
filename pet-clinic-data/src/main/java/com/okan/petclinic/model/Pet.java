@@ -2,11 +2,14 @@ package com.okan.petclinic.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
 
+    // == Fields ==
     @Column(name = "name")
     private String name;
 
@@ -23,6 +26,12 @@ public class Pet extends BaseEntity {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    @OneToMany(mappedBy = "pet",cascade = CascadeType.ALL)
+    @Column(name = "visits")
+    private Set<Visit> visits = new HashSet<>();
+
+
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -53,5 +62,13 @@ public class Pet extends BaseEntity {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 }

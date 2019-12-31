@@ -1,5 +1,9 @@
 package com.okan.petclinic.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 /**
@@ -7,12 +11,23 @@ import java.time.LocalDate;
  * Date:     29/12/2019
  * Time:     20:59
  */
+@Entity
+@Table(name = "visits")
 public class Visit extends BaseEntity {
 
+    // == Fields ==
+    @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @Column(name = "pet")
     private Pet pet;
 
+
+    // Getters and Setters
     public LocalDate getDate() {
         return date;
     }

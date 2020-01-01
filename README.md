@@ -1,4 +1,4 @@
 # pet-clinic
-[![CircleCI](https://circleci.com/gh/OkanHollander/spring-recipe-app/tree/master.svg?style=svg)](https://circleci.com/gh/OkanHollander/spring-recipe-app/tree/master)
+[![CircleCI](https://circleci.com/gh/OkanHollander/pet-clinic.svg?style=svg)](https://circleci.com/gh/OkanHollander/pet-clinic)
 
 Spring Boot Pet Clinic
